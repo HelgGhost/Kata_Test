@@ -84,23 +84,26 @@ public class Calculator {
     private void parseString(String string){
         String a1,b1;
         int count=0, place=0;
-        char operation;
-        char[] operations =  new char[] {'+','-','*','/'};
+        char operation,o;
+        String operations =  "+-/*";
        string = string.replace(" ","");
-        if (string.length()<3){
-            count = 2;
-        }
-        for (char o:operations) {
-            int tplace = string.indexOf(o);
-            if(tplace>0){
+        for (int i=0;i<string.length()-1;i++) {
+            o = string.charAt(i);
+            if(operations.indexOf(o)>=0){
                 count++;
-                place = tplace;
+                place = i;
                 this.operation = o;
-            } else if (tplace==0) {
-                count = 2;
             }
         }
-        if (count!=1 && place<2){
+        if (count==0){
+            try {
+                throw new IOException("throws Exception //т.к. строка не является математической операцией");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        if (count>1){
             try {
                 throw new IOException("//т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
             } catch (IOException e) {

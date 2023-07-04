@@ -9,29 +9,17 @@ class Calculator {
         parseString(string);
     }
     private int Calculate(){
-        int result;
-        switch (this.operation){
-            case '+':
-                result = a+b;
-                break;
-            case '-':
-                result = a-b;
-                break;
-            case '*':
-                result = a*b;
-                break;
-            case '/':
-                result = a/b;
-                break;
-            default:
-                result = 0;
-                break;
-        }
-        return result;
+        return switch (this.operation) {
+            case '+' -> a + b;
+            case '-' -> a - b;
+            case '*' -> a * b;
+            case '/' -> a / b;
+            default -> 0;
+        };
     }
 
     public String toString(){
-        String result="";
+        String result;
         if(this.typeOfOperand == TypeOfOperand.ROME){
             result = RomanNumerals.arabToRoman(this.Calculate());
         }
@@ -84,7 +72,7 @@ class Calculator {
     private void parseString(String string){
         String a1,b1;
         int count=0, place=0;
-        char operation,o;
+        char o;
         String operations =  "+-/*";
        string = string.replace(" ","");
         for (int i=0;i<string.length()-1;i++) {
@@ -111,7 +99,7 @@ class Calculator {
             }
         }
         a1 = string.substring(0,place);
-        b1 = string.substring(place+1,string.length());
+        b1 = string.substring(place+1);
         fillTypeOfOperand(a1,b1);
         fillIntegers(a1,b1);
     }

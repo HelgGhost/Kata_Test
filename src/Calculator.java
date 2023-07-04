@@ -1,6 +1,6 @@
 import java.io.IOException;
 
-public class Calculator {
+class Calculator {
     private int a;
     private int b;
     private TypeOfOperand typeOfOperand;

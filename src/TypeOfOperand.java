@@ -1,2 +1,2 @@
-public enum TypeOfOperand {ARAB,ROME,NONE
+enum TypeOfOperand {ARAB,ROME,NONE
 }

@@ -4,11 +4,10 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String string = scanner.nextLine();
-        Calculator calculator = new Calculator(string);
-        System.out.println(calculator.toString());
+        System.out.println(calc(string));
 
     }
     public static String calc(String input){
-        return input;
+        return new Calculator(input).toString();
     };
 }
